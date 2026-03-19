@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WeatherRecord {
+  id           String   @id @default(uuid())
+  location     String
+  resolvedCity String
+  latitude     Float
+  longitude    Float
+  startDate    DateTime?
+  endDate      DateTime?
+  weatherData  Json
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
