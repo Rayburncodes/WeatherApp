@@ -22,3 +22,6 @@ client/.env.*
 # Logs
 *.log
 npm-debug.log*
+
+# Local UI mockup (optional; large binary — omit from remote if push fails)
+docs-ui-mockup.png

@@ -1,13 +1,17 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import path from 'path';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import exportRoutes from './routes/exportRoutes';
 import integrationsRoutes from './routes/integrationsRoutes';
 import recordsRoutes from './routes/recordsRoutes';
 import weatherRoutes from './routes/weatherRoutes';
 
-dotenv.config();
+// Load `.env` from monorepo root (npm -w server run dev uses `server/` as cwd).
+const rootEnv = path.resolve(__dirname, '../../.env');
+dotenv.config({ path: rootEnv });
+dotenv.config(); // fallback: `server/.env` if present
 
 const app = express();
 
